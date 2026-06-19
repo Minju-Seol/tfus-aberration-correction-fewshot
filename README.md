@@ -29,8 +29,6 @@ This work proposes a geometry-aware deep surrogate model that:
 ├── models/
 │   ├── Models_archive.py        # Phase and Amplitude model architectures
 │   └── __init__.py
-├── data/
-│   └── sample_inference_data.pt # Example Data for model implementation
 ├── dataset.py                   # Dataset classes for amplitude and phase prediction
 ├── utils.py                     # Geometry computation and pre/post-processing utilities
 ├── fewshot_amp_training.py      # LOO training + few-shot fine-tuning (amplitude)
@@ -39,18 +37,30 @@ This work proposes a geometry-aware deep surrogate model that:
 └── README.md
 ```
 
-## Example Dataset
+## Data Format
 
-A small example dataset is provided to illustrate the expected data format and allow the training/inference scripts to be run end-to-end without requiring full patient CT data.
+The patient CT data used in this work is subject to IRB restrictions and is not publicly released. Scripts expect a single `inference_data.pt` file (placed under `--data_dir`) containing a dictionary with the following tensors:
 
-- `data/inference_data.pt` — example tensor dictionary containing the keys: `skull`, `target`, `td`, `amp`, `phase`
-- This example data is for demonstration of the pipeline only and does not reflect the full-scale dataset used in the paper.
+| Key      | Shape                  | Description                                  |
+|----------|-------------------------|-----------------------------------------------|
+| `skull`  | `[N_skulls, 200, 200, 360]` | HU-valued CT volume per skull, 0.5 mm isotropic |
+| `target` | `[N_skulls, N_target, 3]`   | Target positions (meters)                    |
+| `td`     | `[N_skulls, N_target, N_td, 3]` | Transducer element positions (meters)   |
+| `amp`    | `[N_skulls, N_target, N_td, 1]` | Ground-truth amplitude (Pa) from TR simulation |
+| `phase`  | `[N_skulls, N_target, N_td, 1]` | Ground-truth phase (rad) from TR simulation |
+
+with `N_td = 96` elements and, in the paper, `N_skulls = 12` and `N_target = 100`.
 
 ## Requirements
 
 - Python 3.12
 - PyTorch
 - NumPy
+
+Install dependencies:
+```bash
+pip install torch numpy
+```
 
 To run training:
 ```bash
