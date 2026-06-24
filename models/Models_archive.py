@@ -199,7 +199,7 @@ class AmpRegressor(nn.Module):
         return self.out(x) 
 
 class AmpModel(nn.Module):
-    def __init__(self, num_fourier_freqs=8, n_td=N_TD):
+    def __init__(self, num_fourier_freqs=16, n_td=N_TD):
         super().__init__()
         self.ff         = FourierFeatures(6, num_frequencies=num_fourier_freqs)
         self.amp_head = AmpRegressor(262)
