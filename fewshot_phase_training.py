@@ -184,7 +184,7 @@ for test_skull_idx in range(N_SKULLS):
               f"circ {total_circ/n:.4f} | "
               f"kl {total_kl/n:.4f} | "
               f"MAE {total_mae/n:.4f} rad")
-
+    torch.save(model.state_dict(), os.path.join(base_model_dir, f'model_skull{test_skull_idx}.pt'))
     np.random.seed(42)
     n_finetuning_pts=10
     fine_target_idx = np.random.choice(np.arange(N_TARGET),size=n_finetuning_pts, replace=False)
@@ -279,7 +279,8 @@ for test_skull_idx in range(N_SKULLS):
               f"kl {total_kl/n:.4f} | "
               f"MAE {total_mae/n:.4f} rad")
     print(f"Finetuning time: {time.time() - start_fine:.4f} s")
-
+    torch.save(model.state_dict(), os.path.join(fine_model_dir, f'model_skull{test_skull_idx}.pt'))
+    
     model.eval()
     test_dataset = PhaseDataset(
         skull           = skull,
