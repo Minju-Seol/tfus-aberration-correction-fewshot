@@ -1,10 +1,9 @@
-# ================================================
-# Anonymous submission for review
-# ================================================
+import torch
 
 '''
 Paper    : Few-shot Phase-Amplitude Aberration Correction for Phased Array Transducer in Real-time for Transcranial Focused Ultrasound
-Authors  : Anonymous
+Authors  : Minju Seol, Minjee Seo, Seonaeng Cho, Kyungho Yoon
+Venue    : MICCAI 2026 DT4H Workshop (Accepted)
 
 Dataset classes for amplitude and phase prediction models.
 Builds (skull, target, transducer-element) index triplets and 
@@ -30,8 +29,6 @@ Output (per __getitem__ call):
     - PhaseDataset : target, td, gt_phase, soft_label, skull_idx, td_idx, target_idx
 
 '''
-
-import torch
 
 # ----------------------------------------------------------------------------
 # Amplitude Dataset
