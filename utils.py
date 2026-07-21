@@ -1,10 +1,10 @@
-# ================================================
-# Anonymous submission for review
-# ================================================
+import torch
+import torch.nn.functional as F
 
 '''
 Paper    : Few-shot Phase-Amplitude Aberration Correction for Phased Array Transducer in Real-time for Transcranial Focused Ultrasound
-Authors  : Anonymous
+Authors  : Minju Seol, Minjee Seo, Seonaeng Cho, Kyungho Yoon
+Venue    : MICCAI 2026 DT4H Workshop (Accepted)
 
 Utility functions for geometry computation and label/amplitude preprocessing.
 
@@ -18,9 +18,6 @@ Functions:
     - scale_amp / denormalize_amp 
         : normalize / denormalize amplitude values
 '''
-
-import torch
-import torch.nn.functional as F
 
 @torch.no_grad()
 def find_intersections_4(vol, td, so):
