@@ -9,7 +9,8 @@ import torch.nn.functional as F
 
 '''
 Paper    : Few-shot Phase-Amplitude Aberration Correction for Phased Array Transducer in Real-time for Transcranial Focused Ultrasound
-Authors  : Anonymous
+Authors  : Minju Seol, Minjee Seo, Seonaeng Cho, Kyungho Yoon
+Venue    : MICCAI 2026 Workshop DT4H (Accepted)
 
 Phase and Amplitude Prediction models.
 
