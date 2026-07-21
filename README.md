@@ -2,7 +2,7 @@
 
 This repository contains the implementation of a few-shot deep surrogate framework that jointly predicts the phase and amplitude of each element of a 96-element phased-array transducer in real time, for skull-induced aberration correction in transcranial focused ultrasound (tFUS).
 
-*Anonymous submission for double-blind review.*
+*Official repository for MICCAI 2026 DT4H Workshop (Accepted).*
 
 ## Overview
 
