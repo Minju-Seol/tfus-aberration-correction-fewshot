@@ -1,10 +1,22 @@
-# ================================================
-# Anonymous submission for review
-# ================================================
+import os
+import torch
+import torch.nn as nn
+from torch.utils.data import DataLoader
+import torch.nn.functional as F
+import numpy as np
+import time
+import gc
+from datetime import datetime
+import argparse
+
+from models.Models_archive import PhaseModel
+from utils import find_intersections_4, make_circular_soft_label
+from dataset import PhaseDataset
 
 '''
 Paper    : Few-shot Phase-Amplitude Aberration Correction for Phased Array Transducer in Real-time for Transcranial Focused Ultrasound
-Authors  : Anonymous
+Authors  : Minju Seol, Minjee Seo, Seonaeng Cho, Kyungho Yoon
+Venue    : MICCAI 2026 DT4H Workshop (Accepted)
 
 Training script for phase prediction model.
 Few-shot fine-tuning script on the held-out test skull is also included.
@@ -26,21 +38,6 @@ Output:
     - predicted logits                                  (logits)
 
 '''
-
-import os
-import torch
-import torch.nn as nn
-from torch.utils.data import DataLoader
-import torch.nn.functional as F
-import numpy as np
-import time
-import gc
-from datetime import datetime
-import argparse
-
-from models.Models_archive import PhaseModel
-from utils import find_intersections_4, make_circular_soft_label
-from dataset import PhaseDataset
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--data_dir', type=str, default='./data', help='Path to inference_data.pt')
