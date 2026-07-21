@@ -1,3 +1,11 @@
+import torch
+import numpy as np
+import time
+import argparse
+import os
+
+from models.Models_archive import PhaseModel, AmpModel
+from utils import find_intersections_4, scale_amp, denormalize_amp
 
 '''
 Paper    : Few-shot Phase-Amplitude Aberration Correction for Phased Array Transducer in Real-time for Transcranial Focused Ultrasound
@@ -11,15 +19,6 @@ and performs prediction on an unseen skull, then evaluates prediction accuracy
 against ground-truth values.
 
 '''
-
-import torch
-import numpy as np
-import time
-import argparse
-import os
-
-from models.Models_archive import PhaseModel, AmpModel
-from utils import find_intersections_4, scale_amp, denormalize_amp
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--data_dir', type=str, default='./data', help='Path to inference_data.pt')
